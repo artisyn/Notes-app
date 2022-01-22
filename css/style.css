@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+:root {
+	--color-body: linear-gradient(135deg, #abbda1, #c9dbbf);
+	--color-container: rgba(64, 73, 59, 0.9);
+	--color-element1: rgb(168, 126, 121, 0.7);
+	--color-border1: #5c4750;
+	--color-element2: rgb(90, 46, 54, 0.8);
+	--color-element3: rgb(166, 199, 151, 1);
+	--color-border3: #8cac7b;
+	--color-element4: rgb(154, 173, 147, 1);
+}
+html,
+body {
+	min-height: 100vh;
+}
+body {
+	background-image: var(--color-body);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+img {
+	max-width: 100%;
+}
