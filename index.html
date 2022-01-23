@@ -4,6 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+			integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+			crossorigin="anonymous"
+		/>
 		<link rel="stylesheet" href="./css/style.css" />
 		<script src="./js/script.js" defer></script>
 		<title>Notes App</title>
@@ -42,7 +48,30 @@
 					data-color="--color-5"
 				></div>
 			</div>
-			<div class="mainDisplay"></div>
+			<div class="mainDisplay">
+				<div class="note">
+					<span class="note--delete displayNone"
+						><i class="far fa-trash-alt"></i
+					></span>
+					<textarea
+						class="note--title"
+						style="resize: none"
+						rows="1"
+						cols="20"
+						placeholder="Title..."
+					></textarea>
+					<textarea
+						style="resize: none"
+						class="note--text"
+						cols="30"
+						rows="10"
+					></textarea>
+					<span class="note--date">2004 01 02</span>
+					<span class="note--edit"
+						><i class="fas fa-pencil-alt"></i
+					></span>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
