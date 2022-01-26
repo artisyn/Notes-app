@@ -23,7 +23,7 @@ body {
 	min-height: 100vh;
 }
 body {
-	background-image: var(--color-body);
+	background: var(--color-body);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -34,6 +34,7 @@ img {
 	max-width: 100%;
 }
 .appContainer {
+	background: rgba(240, 242, 248, 0.945);
 	margin: 2rem auto;
 	border: 2px solid black;
 	border-radius: 1rem;
@@ -145,6 +146,8 @@ img {
 	align-items: center;
 	position: relative;
 }
+
+/* Delete button appearing on hover */
 .note:hover .note--delete {
 	display: inline;
 }
@@ -152,6 +155,7 @@ img {
 	position: relative;
 	left: -4rem;
 	bottom: 0.2rem;
+	cursor: none;
 }
 .note--edit {
 	font-size: 1.1rem;
@@ -159,6 +163,7 @@ img {
 	bottom: 0.5rem;
 	right: 0.5rem;
 	transition: all ease-in 0.2s;
+	cursor: pointer;
 }
 
 .note--delete {
@@ -167,8 +172,20 @@ img {
 	right: 1rem;
 	top: 0.5rem;
 	transition: all ease-in 0.1s;
+	cursor: pointer;
 }
 .note--delete:hover {
+	transform: scale(1.2);
+}
+.note--save {
+	font-size: 1.8rem;
+	position: absolute;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	transition: all ease-in 0.2s;
+	cursor: pointer;
+}
+.note--save:hover {
 	transform: scale(1.2);
 }
 
@@ -198,5 +215,9 @@ img {
 }
 
 .displayNone {
+	display: none;
+}
+/* needed if element in still clickable, this removes it entirely */
+.NoOpacity {
 	opacity: 0;
 }
