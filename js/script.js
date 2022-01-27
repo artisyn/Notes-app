@@ -117,6 +117,7 @@ mainDisplay.addEventListener('click', (e) => {
 mainDisplay.addEventListener('dblclick', (e) => {
   if (e.target.closest('.note')) {
     e.target.closest('.note').classList.toggle('expandedNote');
+    e.target.closest('.note').classList.toggle('zIndex');
   }
   console.log(e);
 });
@@ -159,6 +160,6 @@ mainDisplay.addEventListener('dblclick', (e) => {
 
 //TODO
 // add an alert or smt on delete buttton done
-// refigure all event listeners
-// expand on double click
+// refigure all event listeners done
+// expand on double click done
 // add a local storage save option
