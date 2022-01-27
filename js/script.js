@@ -2,16 +2,42 @@
 const crossMenu = document.querySelector('.sidebar--menu');
 const colorOptions = document.querySelectorAll('.sidebar--color');
 const mainDisplay = document.querySelector('.mainDisplay');
+// for switching between save and edit;
+function flipIcons(icon1, icon2) {
+  [icon1, icon2].forEach((icon) => {
+    if (icon.classList.contains('displayNone')) {
+      icon.classList.remove('displayNone');
+    } else {
+      icon.classList.add('displayNone');
+    }
+  });
+}
+
+// Adding/removing textAreas
+function flipTextAreas(target) {
+  const note = target.closest('.note');
+  console.log(note);
+  // Selecting textAreas
+  let textAreas = [note.children[1], note.children[2]];
+  // removing the ability to edit
+  textAreas.forEach((area) => {
+    if (area.disabled) {
+      area.disabled = false;
+    } else {
+      area.disabled = true;
+    }
+  });
+}
 
 crossMenu.addEventListener('click', function (e) {
   if (e.target.checked === true) {
     colorOptions.forEach((el) => {
-      el.classList.remove('NoOpacity');
+      el.classList.remove('noOpacity');
     });
   }
   if (e.target.checked === false) {
     colorOptions.forEach((el) => {
-      el.classList.add('NoOpacity');
+      el.classList.add('noOpacity');
     });
   }
 });
@@ -25,7 +51,7 @@ colorOptions.forEach((el) => {
 
 const createTemplate = function (color) {
   const div = document.createElement('div');
-  div.classList.add('note', 'NoOpacity');
+  div.classList.add('note', 'noOpacity');
   let time = new Intl.DateTimeFormat('lt', {
     dateStyle: 'short',
     timeStyle: 'short', //short, long
@@ -60,13 +86,32 @@ const createTemplate = function (color) {
   div.innerHTML = markup;
   mainDisplay.prepend(div);
   setTimeout(() => {
-    mainDisplay.firstChild.classList.remove('NoOpacity');
+    mainDisplay.firstChild.classList.remove('noOpacity');
   }, 200);
 };
 
 // need to remaster event listener
 mainDisplay.addEventListener('click', (e) => {
   console.log(e.target);
+  // Selecting Delete icon
+  if (e.target.classList.contains('fa-trash-alt')) {
+    if (window.confirm('Delete Note?')) {
+      // Deleting note element
+      e.target.closest('.note').remove();
+    }
+  }
+  // Selecting save icon
+  if (e.target.classList.contains('fa-save')) {
+    const note = e.target.closest('.note');
+    flipTextAreas(e.target);
+    flipIcons(note.children[4], note.children[5]);
+  }
+  // Selecting edit button
+  if (e.target.classList.contains('fa-pencil-alt')) {
+    const note = e.target.closest('.note');
+    flipTextAreas(e.target);
+    flipIcons(note.children[4], note.children[5]);
+  }
 });
 
 // mainDisplay.addEventListener('mouseover', (e) => {
@@ -99,13 +144,13 @@ mainDisplay.addEventListener('click', (e) => {
 //     // });
 //     //hiding delete icon + prevent editing
 //     e.target.addEventListener('mouseleave', (e) => {
-//       e.target.children[0].classList.add('NoOpacity');
+//       e.target.children[0].classList.add('noOpacity');
 //       // text.forEach((el) => (el.disabled = true));  // preventing editing
 //     });
 //   }
 // });
 
 //TODO
-// add an alert or smt on delete buttton
+// add an alert or smt on delete buttton done
 // refigure all event listeners
 // add a local storage save option

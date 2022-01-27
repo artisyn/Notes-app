@@ -218,6 +218,6 @@ img {
 	display: none;
 }
 /* needed if element in still clickable, this removes it entirely */
-.NoOpacity {
+.noOpacity {
 	opacity: 0;
 }
