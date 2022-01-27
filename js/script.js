@@ -16,7 +16,6 @@ function flipIcons(icon1, icon2) {
 // Adding/removing textAreas
 function flipTextAreas(target) {
   const note = target.closest('.note');
-  console.log(note);
   // Selecting textAreas
   let textAreas = [note.children[1], note.children[2]];
   // removing the ability to edit
@@ -64,8 +63,9 @@ const createTemplate = function (color) {
 					<textarea
 						class="note--title"
 						style="resize: none"
-						rows="1"
-						cols="20"
+						// rows="2"
+						// cols="20"
+            maxlength="22"
 						placeholder="Title..."
                         
 					></textarea>
@@ -92,7 +92,7 @@ const createTemplate = function (color) {
 
 // need to remaster event listener
 mainDisplay.addEventListener('click', (e) => {
-  console.log(e.target);
+  // console.log(e.target);
   // Selecting Delete icon
   if (e.target.classList.contains('fa-trash-alt')) {
     if (window.confirm('Delete Note?')) {
@@ -112,6 +112,13 @@ mainDisplay.addEventListener('click', (e) => {
     flipTextAreas(e.target);
     flipIcons(note.children[4], note.children[5]);
   }
+});
+// Expanding functionality
+mainDisplay.addEventListener('dblclick', (e) => {
+  if (e.target.closest('.note')) {
+    e.target.closest('.note').classList.toggle('expandedNote');
+  }
+  console.log(e);
 });
 
 // mainDisplay.addEventListener('mouseover', (e) => {
@@ -153,4 +160,5 @@ mainDisplay.addEventListener('click', (e) => {
 //TODO
 // add an alert or smt on delete buttton done
 // refigure all event listeners
+// expand on double click
 // add a local storage save option
